@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>What to do?</title>
+  <link rel="icon" type="icon" href="favicon.png">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div id="logo-container">
+            <h1 id="logo-text">What To Do?</h1>
+        </div>
+        <div id="social-media-icons">
+          <a href="https://bmc.link/duck404"><img src="icons/bmc.png" alt="Coffee"></a>
+          <a href="https://twitter.com/dnghngtng"><img src="icons/twitter.png" alt="Twitter"></a>
+        </div>
+    </header>
+  <div id="text-container" >
+    <h1 id="main-text" class="activity_text">WHAT TO DO?</h1>
+  <button id="show-activity-button">Suggest me!</button>
+  </div>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const showActivityButton = document.getElementById('show-activity-button');
+      const textContainer = document.getElementById('text-container');
+      const mainText = document.getElementById('main-text');
+
+      showActivityButton.addEventListener('click', () => {
+        fetch('https://www.boredapi.com/api/activity')
+          .then(response => response.json())
+          .then(data => {
+            mainText.textContent = data['activity'];
+          })
+          .catch(error => {
+            console.error('Error:', error);
+          });
+      });
+    });
+  </script>
+</body>
+</html>
