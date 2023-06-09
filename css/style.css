@@ -3,10 +3,17 @@
     src: url('../fonts/text.ttf') format('truetype');
 }
 
-.activity_text{
+.activity_text {
     font-family: 'CustomFont', Arial, sans-serif;
-    font-size: 50px;
-    color:#454545;
+    font-size: 4vw; /* Using viewport width as a relative unit */
+    color: #454545;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    .activity_text {
+        font-size: 6vw; /* Adjust the font size for smaller screens */
+    }
 }
 
 #text-container {
@@ -15,7 +22,7 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin-top: -100px;
+    margin-top: -10vh;
     text-align: center;
 }
 
