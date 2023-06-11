@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>What to do?</title>
   <link rel="icon" type="icon" href="favicon.png">
@@ -9,20 +10,21 @@
   <meta name="keywords" content="bored, what to do, what should i do, activity,activities">
   <meta name="author" content="Duck404">
 </head>
+
 <body>
-    <header>
-        <div id="logo-container">
-            <h1 id="logo-text">What To Do?</h1>
-        </div>
-        <div id="social-media-icons">
-          <a href="https://bmc.link/duck404"><img src="icons/bmc.png" alt="Coffee"></a>
-          <a href="https://www.producthunt.com/posts/what-to-do"><img src="icons/product-hunt.svg" alt="Product Hunt"></a>
-          <a href="https://twitter.com/dnghngtng"><img src="icons/twitter.png" alt="Twitter"></a>
-        </div>
-    </header>
-  <div id="text-container" >
+  <header>
+    <div id="logo-container">
+      <h1 id="logo-text">What To Do?</h1>
+    </div>
+    <div id="social-media-icons">
+      <a href="https://bmc.link/duck404"><img src="icons/bmc.png" alt="Coffee"></a>
+      <a href="https://www.producthunt.com/posts/what-to-do"><img src="icons/product-hunt.svg" alt="Product Hunt"></a>
+      <a href="https://twitter.com/dnghngtng"><img src="icons/twitter.png" alt="Twitter"></a>
+    </div>
+  </header>
+  <div id="text-container">
     <h1 id="main-text" class="activity_text">WHAT TO DO?</h1>
-  <button id="show-activity-button">Suggest me!</button>
+    <button id="show-activity-button">Suggest me!</button>
   </div>
 
   <script>
@@ -32,17 +34,27 @@
       const mainText = document.getElementById('main-text');
 
       showActivityButton.addEventListener('click', () => {
+        showActivityButton.disabled = true; // Disable the button while fetching data
+        showActivityButton.innerHTML = '<span class="loading-spinner"></span>'; // Add the loading spinner
+
         fetch('https://www.boredapi.com/api/activity')
           .then(response => response.json())
           .then(data => {
             mainText.textContent = data['activity'];
+            showActivityButton.disabled = false; // Enable the button
+            showActivityButton.innerHTML = 'Suggest me!'; // Restore the button text
           })
           .catch(error => {
             console.error('Error:', error);
+            showActivityButton.disabled = false; // Enable the button in case of error
+            showActivityButton.innerHTML = 'Suggest me!'; // Restore the button text
           });
       });
     });
   </script>
-  <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "77629a45fc1d4cea85f291b3056a9987"}'></script><!-- End Cloudflare Web Analytics -->
+  <!-- Cloudflare Web Analytics -->
+  <script defer src='https://static.cloudflareinsights.com/beacon.min.js'
+    data-cf-beacon='{"token": "77629a45fc1d4cea85f291b3056a9987"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
+
 </html>
