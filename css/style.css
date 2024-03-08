@@ -42,6 +42,13 @@
     margin-left: 10px;
 }
 
+.product-hunt-badge {
+    position: fixed;
+    right: 20px; /* Adjust the space from the right screen edge */
+    bottom: 20px; /* Adjust the space from the bottom screen edge */
+    z-index: 1000; /* Ensure it stays above other content */
+  }
+
 body {
     background-color: #F9E17E;
 }
