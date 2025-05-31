@@ -1,15 +1,8 @@
-<script>
-    window.addEventListener('DOMContentLoaded', () => {
-      const textContainer = document.getElementById('text-container');
-      const mainText = document.getElementById('main-text');
+document.getElementById('getActivityBtn').addEventListener('click', async () => {
+  const res = await fetch('/api');
+  const data = await res.json();
+  const mainText = document.getElementById('main-text');
 
-      fetch('https://www.boredapi.com/api/activity')
-        .then(response => response.json())
-        .then(data => {
-          mainText.textContent = data['activity'];
-        })
-        .catch(error => {
-          console.error('Error:', error);
-        });
-    });
-  </script>
+
+  mainText.textContent = JSON.stringify(data, null, 2);
+});
