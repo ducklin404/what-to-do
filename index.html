@@ -40,27 +40,24 @@
       const mainText = document.getElementById('main-text');
 
       showActivityButton.addEventListener('click', () => {
-        showActivityButton.disabled = true; // Disable the button while fetching data
-        showActivityButton.innerHTML = '<span class="loading-spinner"></span>'; // Add the loading spinner
+        showActivityButton.disabled = true;
+        showActivityButton.innerHTML = '<span class="loading-spinner"></span>'; 
 
-        fetch('https://www.boredapi.com/api/activity')
+        fetch('/api')
           .then(response => response.json())
           .then(data => {
             mainText.textContent = data['activity'];
-            showActivityButton.disabled = false; // Enable the button
-            showActivityButton.innerHTML = 'Suggest me!'; // Restore the button text
+            showActivityButton.disabled = false; 
+            showActivityButton.innerHTML = 'Suggest me!';
           })
           .catch(error => {
             console.error('Error:', error);
-            showActivityButton.disabled = false; // Enable the button in case of error
-            showActivityButton.innerHTML = 'Suggest me!'; // Restore the button text
+            showActivityButton.disabled = false;
+            showActivityButton.innerHTML = 'Suggest me!'; 
           });
       });
     });
   </script>
-  <!-- Cloudflare Web Analytics -->
-  <script defer src='https://static.cloudflareinsights.com/beacon.min.js'
-    data-cf-beacon='{"token": "77629a45fc1d4cea85f291b3056a9987"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 
 </html>
